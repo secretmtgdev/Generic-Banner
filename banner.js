@@ -16,9 +16,9 @@
 
     // Bind handlers to specific onclick events
     var handlerFunctions = {
-        'addClicked': addClicked,
-        'alreadyInstalledClicked': alreadyInstalledClicked,
-        'noThanksClicked': noThanksClicked
+        addClicked, 
+        alreadyInstalledClicked,
+        noThanksClicked
     };
 
     // Each banner utilizes a different set of storage keys
@@ -80,16 +80,16 @@
     ///////////////////////////////////////////////////////////////////////////////////
     function noThanksClicked(event) {
         removeBanner();
-        logAppInsight(storageKeys['declineClick']);
+        logBannerInsight(storageKeys['declineClick']);
     }
 
     function addClicked(event) {
-        logAppInsight(storageKeys['addClick']);
+        logBannerInsight(storageKeys['addClick']);
     }
 
     function alreadyInstalledClicked(event) {
         removeBanner();
-        logAppInsight(storageKeys['installedClick']);
+        logBannerInsight(storageKeys['installedClick']);
     }
 
 
@@ -116,10 +116,10 @@
     function handleDailyEvent(eventOccurred) {
         var tokenTime = localStorage.getItem(eventOccurred);
         if (tokenTime === null) {
-            logAppInsight(eventOccurred);
+            logBannerInsight(eventOccurred);
         } else if ((convertToSeconds(Date.now()) - tokenTime) > (24 * 60 * 60)) {
             localStorage.removeItem(eventOccurred);
-            logAppInsight(eventOccurred);
+            logBannerInsight(eventOccurred);
         }
     }
 
@@ -282,11 +282,11 @@
     ///                                                                             ///
     ///////////////////////////////////////////////////////////////////////////////////
     /** 
-     * @method logAppInsight
+     * @method logBannerInsight
      * @description Logs a user action to application insights and stores the information into 
      *              local storage as to not show the user the banner again.
      * @param {Event} eventOccurred Typically a click event. */
-    function logAppInsight(eventOccurred) {
+    function logBannerInsight(eventOccurred) {
         if (localStorage.getItem(eventOccurred) === null) {
             localStorage.setItem(eventOccurred, convertToSeconds(Date.now()));
             console.log(`${eventOccurred} tracked`);
