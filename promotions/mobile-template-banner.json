@@ -1,0 +1,55 @@
+{
+    "type": "mobile",
+    "storageKeys": {
+        "declineClick": "<Banner_name>BannerDecline",
+        "addClick": "<Banner_name>BannerClick",
+        "installedClick": "<Banner_name>InstalledClick",
+        "displayBanner": "<Banner_name>DisplayBanner",
+        "declinedPreviously": "<Banner_name>uDeclinedPreviously",
+        "declineTimeout": "<Banner_name>DeclineTimeout",
+        "alreadyInstalled": "<Banner_name>AlreadyInstalled"
+    },
+    "elements": {
+        "sectionA": {
+            "propA": {
+                "type": "img",
+                "src": "<Promotional_image_source>",
+                "alt": "<Promotional_image>"
+            }
+        },
+        "sectionB": {
+            "propA": {
+                "type": "h3",
+                "innerText": "<Main_message>"
+            },
+            "propB": {
+                "type": "h4",
+                "innerText": "<Secondary_message>"
+            }
+        },
+        "sectionC": {
+            "propA": {
+                "type": "a",
+                "innerText": "<Banner_promotion_install>",
+                "mobile": {
+                    "ios": "<ios_link>",
+                    "android": "<Android_link>"
+                },
+                "id": "add-extension",
+                "onclick": "addClicked"
+            },
+            "propB": {
+                "type": "a",
+                "innerText": "<Banner_promotion_installed",
+                "id": "already-have-extension",
+                "onclick": "alreadyInstalledClicked"
+            },
+            "propC": {
+                "type": "a",
+                "innerText": "<Banner_promotion_denial>",
+                "id": "no-thanks",
+                "onclick": "noThanksClicked"
+            }
+        }
+    }
+}

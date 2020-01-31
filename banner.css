@@ -1,0 +1,100 @@
+:root {
+    --half: 0.5;
+    --mobile-section-height: 150px;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    height: 75px;
+    width: 100%;
+    background-color: lightblue;
+}
+
+.banner-content-container > * {
+    padding: 5px;
+    margin: 5px;
+}
+
+.highlight {
+    transform: scale(1.1);
+    cursor: pointer;
+    color: yellow;
+}
+
+
+.flex-container > section {
+    position: relative;
+}
+
+.banner-content-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+
+@media only screen and (min-width: 1025px) {
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .flex-container > section:not(:nth-child(2)) {
+        text-align: center;
+    }
+
+    .flex-container > section:nth-child(1) {
+        flex: 1;
+    }
+
+    .flex-container > section:nth-child(2) {
+        flex: 3;
+    }
+
+    .flex-container > section:nth-child(3) {
+        flex: 2;
+    }
+}
+
+
+@supports (display: grid) {
+    @media only screen and (max-width: 1024px) {
+        #generic-banner {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            height: calc(2 * var(--mobile-section-height));
+        }
+
+        #generic-banner > section {
+            height: var(--mobile-section-height);
+        }
+
+        #generic-banner > section:nth-child(2) {
+            display: none;
+        }
+
+        #generic-banner > section img {
+            max-height: var(--mobile-section-height);
+        }
+
+        #generic-banner > section a:first-child {
+            display: block;
+            font-size: 1.5rem;
+        }
+
+        #generic-banner > section a:not(:first-child) {
+            font-size:0.7rem;
+        }
+
+        .banner-content-container {
+            text-align: center;
+        }
+    }
+}
